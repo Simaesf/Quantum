@@ -118,9 +118,14 @@ IBMQ.load_account()
 provider0 = IBMQ.get_provider()
 available_backends = provider0.backends() ### All available backends 
 
-print('Available Backends:\n')
-for b in available_backends: 
-    print(b)
+print('Available Backends:\n') 
+for b in available_backends:
+    status = b.status()
+    is_operational = status.operational
+    if is_operational == False:
+        print (b, "is not operational.")
+    jobs_in_queue = status.pending_jobs
+    print( jobs_in_queue, "queue for:   " ,b )
 
 ### Choosing the desired backend with at least 5 qubits:
 
