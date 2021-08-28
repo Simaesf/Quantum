@@ -365,7 +365,7 @@ nshots = 8192
 simulator_backend = Aer.get_backend('qasm_simulator')
 
 ## Drawing the quantum circuit
-circuit.draw()
+qc.draw()
 
 ## Running the circuit on the backend
 job = execute(qc, backend=simulator_backend, shots=nshots)
